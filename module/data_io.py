@@ -37,10 +37,17 @@ def load_TCL_data():
 
 def load_TCD_data():
     # csv 파일 불러오기
+    df_teamcolor_relation = load_dataset('team_color_detail/관계팀컬러.csv')
+    
+    return df_teamcolor_relation
+  
+  
+def load_final_data():
+    # csv 파일 불러오기
     df_teamcolor_club = load_dataset('team_color_detail/클럽팀컬러.csv')
     df_teamcolor_nation = load_dataset('team_color_detail/국가팀컬러.csv')
     df_teamcolor_reinforce = load_dataset('team_color_detail/강화팀컬러.csv')
     df_teamcolor_relation = load_dataset('team_color_detail/관계팀컬러.csv')
     df_teamcolor_special = load_dataset('team_color_detail/스페셜팀컬러.csv')
-    
+
     return df_teamcolor_club,df_teamcolor_nation,df_teamcolor_reinforce,df_teamcolor_relation,df_teamcolor_special

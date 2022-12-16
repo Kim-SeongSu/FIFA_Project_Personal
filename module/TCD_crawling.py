@@ -10,12 +10,12 @@ from TCL_crawling import __open_chrome
 
 
 
-# 각 팀 컬러 별 적용 조건, 효과 가져오기
+## 각 팀 컬러 별 적용 조건, 효과 가져오기
 def team_color_detail(teamcolor_type):
     driver, A = __open_chrome(1600,900,1,3) 
-    df_teamcolor_club,df_teamcolor_nation,df_teamcolor_reinforce,df_teamcolor_relation,df_teamcolor_special = __team_color_crawling_data(driver, A,teamcolor_type)
+    df_teamcolor_relation = __team_color_crawling_data(driver, A,teamcolor_type)
     
-    return df_teamcolor_club,df_teamcolor_nation,df_teamcolor_reinforce,df_teamcolor_relation,df_teamcolor_special
+    return df_teamcolor_relation
     
 
     
@@ -120,7 +120,7 @@ def __team_color_crawling_data(driver, A,teamcolor_type):
                 # 팀 컬러 설명 저장
                 info = driver.find_element(By.CSS_SELECTOR, '#teamcolorPop > div > div.header > div > span').text
                 teamcolor_info.append(info)
-                time.sleep(1)
+                time.sleep(0.5)
                 
                 
                 
@@ -131,7 +131,7 @@ def __team_color_crawling_data(driver, A,teamcolor_type):
                         if number == 1:
                             # 'num'과 아래의 타입 중 하나를 골라서 넣으세요!
                             # type = 'div', 'div.level.lvu', 'div.level.lv'
-                            temp_1, temp_2 = location_inputor(driver,num,'div')
+                            temp_1, temp_2 = __location_inputor(driver,num,'div')
                             
                             step_1_require_player_nums.append(temp_1)
                             step_1_effects.append(temp_2)
@@ -139,10 +139,10 @@ def __team_color_crawling_data(driver, A,teamcolor_type):
                             
                         elif number > 1:   
                             if len(teamcolors) == len(teamcolor_reinforce):
-                                temp_1, temp_2 = location_inputor(driver,num,'div.level.lvu')
+                                temp_1, temp_2 = __location_inputor(driver,num,'div.level.lvu')
                             
                             elif len(teamcolors) != len(teamcolor_reinforce):
-                                temp_1, temp_2 = location_inputor(driver,num,'div.level.lv')
+                                temp_1, temp_2 = __location_inputor(driver,num,'div.level.lv')
                         
                             step_1_require_player_nums.append(temp_1)
                             step_1_effects.append(temp_2)
@@ -154,10 +154,10 @@ def __team_color_crawling_data(driver, A,teamcolor_type):
                     elif num == 2:
                         if num <= number:
                             if len(teamcolors) == len(teamcolor_reinforce):
-                                temp_1, temp_2 = location_inputor(driver,num,'div.level.lvu')
+                                temp_1, temp_2 = __location_inputor(driver,num,'div.level.lvu')
                             
                             elif len(teamcolors) != len(teamcolor_reinforce):
-                                temp_1, temp_2 = location_inputor(driver,num,'div.level.lv')
+                                temp_1, temp_2 = __location_inputor(driver,num,'div.level.lv')
                             
                             step_2_require_player_nums.append(temp_1)
                             step_2_effects.append(temp_2)
@@ -170,10 +170,10 @@ def __team_color_crawling_data(driver, A,teamcolor_type):
                     elif num == 3:
                         if num <= number:
                             if len(teamcolors) == len(teamcolor_reinforce):
-                                temp_1, temp_2 = location_inputor(driver,num,'div.level.lvu')
+                                temp_1, temp_2 = __location_inputor(driver,num,'div.level.lvu')
                             
                             elif len(teamcolors) != len(teamcolor_reinforce):
-                                temp_1, temp_2 = location_inputor(driver,num,'div.level.lv')
+                                temp_1, temp_2 = __location_inputor(driver,num,'div.level.lv')
                             
                             step_3_require_player_nums.append(temp_1)
                             step_3_effects.append(temp_2)
@@ -186,10 +186,10 @@ def __team_color_crawling_data(driver, A,teamcolor_type):
                     elif num == 4:
                         if num <= number:
                             if len(teamcolors) == len(teamcolor_reinforce):
-                                temp_1, temp_2 = location_inputor(driver,num,'div.level.lvu')
+                                temp_1, temp_2 = __location_inputor(driver,num,'div.level.lvu')
                             
                             elif len(teamcolors) != len(teamcolor_reinforce):
-                                temp_1, temp_2 = location_inputor(driver,num,'div.level.lv')
+                                temp_1, temp_2 = __location_inputor(driver,num,'div.level.lv')
                             
                             step_4_require_player_nums.append(temp_1)
                             step_4_effects.append(temp_2)
@@ -201,15 +201,15 @@ def __team_color_crawling_data(driver, A,teamcolor_type):
                     else:
                         print('error: location_inputor가 작동하지 않습니다.')
                         break
-                    time.sleep(1)
+                    time.sleep(0.5)
                     
                 # 세부 설명 나오기
                 driver.find_element(By.XPATH, '//*[@id="teamcolorPop"]/div/div[1]/a').click()
-                time.sleep(1)
+                time.sleep(0.3)
 
                 # 검색어 초기화 
                 driver.find_element(By.CLASS_NAME,'btn_reset').click()
-                time.sleep(1)
+                time.sleep(A)
             
             except:
                 print('error: 팀 컬러 선택 & 상세 정보 클릭')
@@ -229,6 +229,7 @@ def __team_color_crawling_data(driver, A,teamcolor_type):
                     }
         
         columns = ['팀 컬러','팀 컬러 설명','1단계 적용 조건','2단계 적용 조건','3단계 적용 조건','4단계 적용 조건','1단계 효과','2단계 효과','3단계 효과','4단계 효과']
+        
         
         if count == 0:
             df_teamcolor_club = pd.DataFrame(data = dict_temp, columns=columns)
@@ -258,4 +259,4 @@ def __team_color_crawling_data(driver, A,teamcolor_type):
     df_teamcolor_special.to_csv('./data/team_color_detail/스페셜팀컬러.csv', encoding='utf-8-sig', index = False)
     
     
-    return df_teamcolor_club,df_teamcolor_nation,df_teamcolor_reinforce,df_teamcolor_relation,df_teamcolor_special
+    return df_teamcolor_relation
