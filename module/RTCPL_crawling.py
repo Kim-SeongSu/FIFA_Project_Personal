@@ -106,13 +106,13 @@ def __df_teamcolor_relation_plus(driver,A,teamcolor_relation):
                     __insert_player_info(driver,'//*[@id="slider1"]/input[2]',max_num)
                     
                     driver.find_element(By.XPATH, '//*[@id="slider1"]/input[2]').send_keys(Keys.ENTER)
-                    time.sleep(0.2)
+                    driver.implicitly_wait(time_to_wait=10)
                     
                     
                     # 조건 만족하는 선수 숫자 세기
                     player_list = driver.find_elements(By.XPATH,'//*[@id="ulPlayerList"]')
                     player_list_num = int(player_list[0].text.count('BP'))
-                    time.sleep(0.3)
+                    time.sleep(0.2)
 
                     
                     
@@ -122,12 +122,12 @@ def __df_teamcolor_relation_plus(driver,A,teamcolor_relation):
                         player_temp = driver.find_element(By.XPATH, f'//*[@id="ulPlayerList"]/li[{num}]/div[1]/div[3]/div[2]')
                         season = season_temp.get_attribute('src').split('/')[-1].replace('.png','')
                         player = player_temp.text
-                        time.sleep(0.5)
 
                         # 시즌 & 선수명 합치기
                         total_temp = season+' '+player
                         temp_TC_relation_plus.append(total_temp)
-                    
+                        
+                    time.sleep(0.5)
                     # 각 팀컬러 별 선수 합쳐주기
                     each_teamcolor_players.extend(temp_TC_relation_plus)
           
@@ -137,7 +137,7 @@ def __df_teamcolor_relation_plus(driver,A,teamcolor_relation):
    
                 max_num -= 10
                 min_num -= 10     
-                time.sleep(0.2)
+                time.sleep(0.1)
             
             ## 중복값 제거    
             each_teamcolor_players = list(set(each_teamcolor_players))
