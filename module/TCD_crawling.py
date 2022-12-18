@@ -61,7 +61,7 @@ def __team_color_crawling_data(driver, A,teamcolor_type):
     # 팝업창 닫기
     try:
         driver.find_element(By.XPATH, '//*[@id="wrapper"]/div[1]/a/span').click()
-        time.sleep(A)
+        driver.implicitly_wait(time_to_wait=30)
     except:
         pass
 
