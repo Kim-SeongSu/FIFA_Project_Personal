@@ -6,7 +6,7 @@ from selenium.webdriver.common.keys import Keys
 from tqdm import tqdm
 import time
 
-from data_io import load_TCL_data
+from data_healer import load_TCL_data
 from TCL_crawling import __open_chrome
 
 
@@ -164,14 +164,15 @@ def __df_teamcolor_relation_plus(driver,A,teamcolor_relation):
                 '시즌 & 이름': [val for val in TC_relation_plus]}
     columns = ['팀 컬러','시즌 & 이름']
 
-    print(dict_temp)
+    
     try:
         df_TC_relation_plus = pd.DataFrame(data = dict_temp, columns=columns)
         
         return df_TC_relation_plus
     except:
-        print('error: To making dictionary is failed')
-        return dict_temp
+        print('error: To making dictionary is failed','\n', dict_temp)
+
+        
 
 
 def __merge_TC_relation(df_teamcolor_relation, df_TC_relation_plus):
