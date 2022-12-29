@@ -1,12 +1,12 @@
-TRUNCATE TABLE price; 
+TRUNCATE TABLE player_main; 
+
 
 -- alter table [테이블명]        drop foreign key [확인한 제약조건명];
 
--- alter table 22KFA_stats          drop foreign key 22KFA_stats_ibfk_1;
--- alter table 20KLB_stats          drop foreign key 20KLB_stats_ibfk_1;
--- alter table 20NG_stats           drop foreign key 20NG_stats_ibfk_1;
--- alter table 20TOTN_stats         drop foreign key 20TOTN_stats_ibfk_1;
--- alter table 20TOTS_stats         drop foreign key 20TOTS_stats_ibfk_1;
+
+
+
+
 -- alter table 18TOTY_stats         drop foreign key 18TOTY_stats_ibfk_1;     
 -- alter table 19NG_stats           drop foreign key 19NG_stats_ibfk_1;     
 -- alter table 19TOTS_stats         drop foreign key 19TOTS_stats_ibfk_1;     
@@ -71,3 +71,71 @@ TRUNCATE TABLE price;
 -- alter table price                drop foreign key price_ibfk_1;
 -- alter table team_club            drop foreign key team_club_ibfk_1;
 -- alter table team_nation          drop foreign key team_nation_ibfk_1;
+
+
+
+
+-- truncate table 18TOTY_stats          ;
+-- truncate table 19NG_stats           ;
+-- truncate table 19TOTS_stats            ;
+-- truncate table 19TOTY_stats           ;
+-- truncate table 19UCL_stats           ;
+-- truncate table 2012KH_stats          ;
+-- truncate table 2018KFA_stats          ;
+-- truncate table 2019KFA_stats          ;
+-- truncate table 20KLB_stats           ;
+-- truncate table 20NG_stats            ;
+-- truncate table 20TOTN_stats          ;
+-- truncate table 20TOTS_stats         ;
+-- truncate table 20TOTY_stats         ;
+-- truncate table 20UCL_stats          ;
+-- truncate table 21KFA_stats          ;
+-- truncate table 21KLB_stats          ;
+-- truncate table 21NG_stats          ;
+-- truncate table 21TOTN_stats         ;
+-- truncate table 21TOTS_stats         ;
+-- truncate table 21TOTY_stats        ;
+-- truncate table 21UCL_stats          ;
+-- truncate table 22HR_stats          ;
+-- truncate table 22KFA_stats          ;
+-- truncate table 22TOTN_stats         ;
+-- truncate table 22TOTS_stats         ;
+-- truncate table 22TOTY_stats         ;
+-- truncate table BOE21_stats          ;
+-- truncate table BTB_stats            ;
+-- truncate table BWC_stats            ;
+-- truncate table CAP_stats            ;
+-- truncate table CFA_stats            ;
+-- truncate table COC_stats            ;
+-- truncate table EBS_stats            ;
+-- truncate table FA_stats            ;
+-- truncate table GR_stats            ;
+-- truncate table HOT_stats            ;
+-- truncate table ICON_stats           ;
+-- truncate table LA_stats            ;
+-- truncate table LH_stats            ;
+-- truncate table LN_stats            ;
+-- truncate table LOL_stats            ;
+-- truncate table MCFC_stats          ;
+-- truncate table MCICON_stats        ;
+-- truncate table MC_stats            ;
+-- truncate table MOG_stats            ;
+-- truncate table NHD_stats            ;
+-- truncate table NTG_stats            ;
+-- truncate table OTW_stats            ;
+-- truncate table RMCF_stats           ;
+-- truncate table SPL_stats           ;
+-- truncate table TB_stats            ;
+-- truncate table TC_stats            ;
+-- truncate table TKI_stats            ;
+-- truncate table TKL_stats            ;
+-- truncate table TT_stats            ;
+-- truncate table UP_stats            ;
+-- truncate table VTR_stats            ;
+-- truncate table WC22_stats           ;
+-- truncate table player_detail_swap  ;
+-- truncate table player_main        ;
+-- truncate table player_season       ;
+-- truncate table price              ;
+-- truncate table team_club           ;
+-- truncate table team_nation   ;
