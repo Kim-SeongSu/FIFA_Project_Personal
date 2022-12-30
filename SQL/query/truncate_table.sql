@@ -1,4 +1,4 @@
-TRUNCATE TABLE player_main; 
+TRUNCATE TABLE team_club; 
 
 
 -- alter table [테이블명]        drop foreign key [확인한 제약조건명];
